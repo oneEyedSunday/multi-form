@@ -1,3 +1,4 @@
+import { FormService } from './../../services/form.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./third.component.css']
 })
 export class ThirdComponent implements OnInit {
-
-  constructor() { }
+  fullform;
+  constructor(private fs: FormService) { }
 
   ngOnInit() {
+  this.fullform = FormService.formDataStructure;
   }
 
 }

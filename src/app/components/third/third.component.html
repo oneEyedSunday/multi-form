@@ -1,3 +1,68 @@
-<p>
-  third works!
-</p>
+<div>
+  <h1>Summary</h1>
+  <div fxLayout="column">
+    <div>
+      <h2>Personal Details</h2>
+      <mat-list>
+        <mat-list-item>
+          <h3 matline>First Name</h3>
+          <p matline>{{ fullform.first.firstname }}</p>
+        </mat-list-item>
+        <mat-list-item>
+          <h3 matline>Other Names</h3>
+          <p matline>{{ fullform.first.othernames }}</p>
+        </mat-list-item>
+        <mat-list-item>
+          <h3 matline>Last Name</h3>
+          <p matline>{{fullform.first.lastname }}</p>
+        </mat-list-item>
+        <mat-list-item>
+          <h3 matline>State Of Origin</h3>
+          <p matline>{{fullform.first.state_orig}}</p>
+        </mat-list-item>
+        <mat-list-item>
+          <h3 matline>Date Of Birth</h3>
+          <p matline>{{ fullform.first.dob }}</p>
+        </mat-list-item>
+        <mat-list-item>
+          <h3 matline>Email address</h3>
+          <p matline>{{fullform.first.email}}</p>
+        </mat-list-item>
+        <mat-list-item>
+            <h3 matline>Phone Number</h3>
+            <p matline>{{fullform.first.phone }}</p>
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <div>
+      <h2>Education and Employment History</h2>
+      <mat-list>
+          <mat-list-item>
+            <h3 matline>Course</h3>
+            <p matline>
+              <span>{{fullform.second.undergrad.course}}</span>
+            </p>
+          </mat-list-item>
+          <mat-list-item>
+            <h3 matline>Grade</h3>
+            <p matline>
+              <span>{{ fullform.second.undergrad.grade }}</span>
+            </p>
+          </mat-list-item>
+          <mat-list-item>
+            <h3 matline>SSCE Result</h3>
+            <p matline>
+              <span>{{ fullform.second.ssceResult }}</span>
+            </p>
+          </mat-list-item>
+          <mat-list-item *ngIf="fullform.second.secondSitting">
+            <!-- if second sitting -->
+            <h3 matline>Second sitting</h3>
+            <p matline>
+              <span>{{ fullform.second.ssceResult2 }}</span>
+            </p>
+          </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="container">
+  <!-- restrict page to 1300px wide -->
+  <div class="wrapper" fxLayout fxLayout.xs="column">
+    <!-- give a slight grey background color -->
+    <!-- logo -->
+    <header fxLayout fxLayoutAlign="center">
+      <img src="assets/awesome-logo.svg" alt="Logo">
+    </header>
+
+  </div>
+  <div class="wrapper" fxLayout fxLayout.xs="column">
+    <div class="sidebar">
+      <!-- show where we are and where we have left -->
+      <!-- only when we've actually clicked start and started the form -->
+      <mat-card>
+        <mat-list>
+          <mat-list-item class="formNavigator" (click)="navigateTo(0)">
+            <!-- active sign -->
+              <p mat-line >
+                Instructions
+              </p>
+          </mat-list-item>
+          <mat-list-item class="formNavigator" (click)="navigateTo(1)">
+            <!-- error sign -->
+            <p mat-line >
+              Personal Details
+            </p>
+          </mat-list-item>
+          <mat-list-item class="formNavigator" (click)="navigateTo(2)">
+              <p >
+                  Educational and Employment Details
+              </p>
+          </mat-list-item>
+          <mat-list-item class="formNavigator" (click)="navigateTo(3)">
+              <p mat-line >
+                  Summary
+              </p>
+          </mat-list-item>
+        </mat-list>
+      </mat-card>
+    </div>
+    <main fxFlex="75%">
+      <!-- show current form here -->
+      <!-- pass in a form -->
+      <!-- would have prev and next buttons -->
+      <mat-card>
+      <app-form-display>
+          <app-home *ngIf="(currentForm | async) == 0"></app-home>
+          <app-first *ngIf="(currentForm | async) == 1"></app-first>
+          <app-second *ngIf="(currentForm | async) == 2"></app-second>
+          <app-third *ngIf="(currentForm | async) == 3"></app-third>
+      </app-form-display>
+      </mat-card>
+    </main>
+  </div>
+</div>

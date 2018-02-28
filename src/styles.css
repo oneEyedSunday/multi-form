@@ -1,1 +1,54 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+html {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Cambria, Cochin, 'Centaur Gothic', Georgia, Times, 'Times New Roman', serif
+}
+
+.container {
+  /* width: 100%; */
+  background-color: #fff;
+}
+
+.wrapper {
+  max-width: 1300px;
+}
+
+header {
+  width: 100%;
+  padding: 20px 10px;
+}
+
+li {
+  list-style: none;
+}
+
+.error {
+  color: red;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.formNavigator {
+  text-transform: uppercase;
+  font-family: 'Times New Roman', Times, serif;
+  cursor: pointer;
+  border: 1px solid navy;
+  color: navy;
+}
+
+.formNavigator:hover, .formNavigator:focus{
+  background-color:navy;
+  color: white;
+}
+

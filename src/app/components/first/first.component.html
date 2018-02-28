@@ -1,3 +1,50 @@
-<p>
-  first works!
-</p>
+<form [formGroup]="form">
+    <mat-form-field class="fullWidth">
+        <input placeholder="First Name" formControlName="firstname" matInput>
+    </mat-form-field>
+    <mat-form-field class="fullWidth">
+        <input placeholder="Other Names"dividerColor="accent"  formControlName="othernames" matInput>
+    </mat-form-field>
+    <mat-form-field class="fullWidth">
+        <input placeholder="Last Name" formControlName="lastname" matInput>
+    </mat-form-field>
+    <mat-input-container class="fullWidth">
+        <mat-select formControlName="state_orig" placeholder="State of Origin">
+            <mat-option [value]=null>--Select a State--</mat-option>
+            <mat-option [value]="state" *ngFor="let state of states">{{state}}</mat-option>
+        </mat-select>
+    </mat-input-container>
+
+    <mat-form-field class="fullWidth">
+      <input type="date" matInput formControlName="dob">
+    </mat-form-field>
+    <mat-radio-group formControlName="marital_stat">
+        <mat-radio-button value="married">
+          Married
+        </mat-radio-button>
+        <mat-radio-button value="single">
+          Single
+        </mat-radio-button>
+        <mat-radio-button value="divorced">
+          Divorced
+        </mat-radio-button>
+    </mat-radio-group>
+
+    <mat-form-field class="fullWidth">
+        <input matInput placeholder="Phone Number" formControlName="phone">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-hint *ngIf="form.touched && form.hasError('nomatch')">
+          <span class="error">
+            Emails do not match!!!
+          </span>
+        </mat-hint>
+        <input matInput placeholder="Your Email address" formControlName="email">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Confirm Your Email" formControlName="confirm">
+    </mat-form-field>
+    <mat-input-container class="fullWidth">
+        <textarea matInput placeholder="Address" formControlName="address"></textarea>
+    </mat-input-container>
+</form>

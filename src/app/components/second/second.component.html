@@ -1,3 +1,91 @@
-<p>
-  second works!
-</p>
+<form [formGroup]="form" class="formwidth">
+  <div formGroupName="undergrad">
+    <mat-input-container class="fullWidth">
+      <mat-select placeholder="School Name" formControlName="schoolname" >
+          <mat-option [value]="school" *ngFor="let school of schools">{{ school }}</mat-option>
+      </mat-select>
+    </mat-input-container>
+    <mat-form-field class="fullWidth">
+      <input  placeholder="Department" matInput formControlName="department">
+    </mat-form-field>
+    <mat-form-field class="fullWidth">
+      <input  placeholder="Course" matInput formControlName="course">
+    </mat-form-field>
+    <mat-input-container class="fullWidth">
+    <mat-select placeholder="Degree" formControlName="degreetype" >
+        <mat-option [value]="degree" *ngFor="let degree of degreeTypes">{{ degree }}</mat-option>
+    </mat-select>
+    </mat-input-container>
+    <mat-input-container class="fullWidth">
+      <mat-select placeholder="Grade" formControlName="grade" >
+          <mat-option [value]="grade" *ngFor="let grade of degreeGrades">{{ grade }}</mat-option>
+      </mat-select>
+    </mat-input-container>
+  </div>
+    <div>
+      SSCE results (Second Sitting?)
+      <mat-radio-group formControlName="secondSitting">
+          <mat-radio-button value="true">
+            Yes
+          </mat-radio-button>
+          <mat-radio-button value="false" checked>
+            No
+          </mat-radio-button>
+        </mat-radio-group>
+       <span (click)="add(getSsceResult, createSsceResult())">
+        <mat-icon>add</mat-icon></span>
+       </div>
+    <div formArrayName="ssceResult">
+      <div *ngFor="let result of getSsceResult.controls ;let i = index" [formGroup]="result">
+        <mat-form-field>
+        <input matInput placeholder="Subject" formControlName="subject">
+        <mat-select placeholder="Grade" formControlName="grade">
+          <mat-option [value]="(null)">--Select Grade--</mat-option>
+          <mat-option [value]="grade" *ngFor="let grade of ssceGrades">{{grade}}</mat-option>
+        </mat-select>
+        <span (click)="remove(getSsceResult, i)"><mat-icon>delete</mat-icon></span>
+    </mat-form-field>
+    </div>
+  </div>
+  <div formArrayName="ssceResult2" *ngIf="form.get('secondSitting').value === 'true'">
+      <p>
+        SSCE results Second Sitting
+         <span (click)="add(getSsceResult2, createSsceResult())">
+          <mat-icon>add</mat-icon>
+          Course Result</span>
+      </p>
+        <div *ngFor="let result of getSsceResult2.controls ;let i = index" [formGroup]="result">
+          <mat-form-field>
+          <input matInput placeholder="Subject" formControlName="subject">
+          <mat-select placeholder="Grade" formControlName="grade">
+            <mat-option [value]="(null)">--Select Grade--</mat-option>
+            <mat-option [value]="grade" *ngFor="let grade of ssceGrades">{{grade}}</mat-option>
+          </mat-select>
+          <span (click)="remove(getSsceResult2, i)"><mat-icon>delete</mat-icon></span>
+      </mat-form-field>
+      </div>
+    </div>
+  <div formArrayName="EmploymentHistory">
+    <p>
+      Employment History  <span (click)="add(getEmploymentHistory, createEmploymentHistory())">
+        <mat-icon>
+          add
+        </mat-icon>
+      </span>
+    </p>
+    <div *ngFor="let record of getEmploymentHistory.controls; let i = index;" [formGroup]="record">
+      <mat-form-field>
+        <input  matInput formControlName="employer" placeholder="Employer Name">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput formControlName="designation" placeholder="Job Designation">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput formControlName="description" placeholder="Job Description">
+      </mat-form-field>
+      <mat-slide-toggle formControlName="inEmploy">
+        Currently Work Here?
+      </mat-slide-toggle>
+    </div>
+  </div>
+</form>

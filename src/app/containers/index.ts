@@ -1,10 +1,11 @@
-import { LandingComponent } from './landing/landing.component';
+import { AppComponent } from './app/app.component';
 import { FormDisplayComponent } from './form-display/form-display.component';
 
+
 export const containers: any[] = [
-  LandingComponent,
+  AppComponent,
   FormDisplayComponent
 ];
 
-export * from './landing/landing.component';
+export * from './app/app.component';
 export * from './form-display/form-display.component';
