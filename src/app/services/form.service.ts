@@ -1,3 +1,4 @@
+import { FormGroup } from '@angular/forms';
 import { Injectable } from '@angular/core';
 
 @Injectable()
@@ -74,7 +75,19 @@ export class FormService {
       'C5',
       'C6',
     ]
-};
+  };
+
+  static formValid = {
+    first: {
+      valid: true,
+      invalidFields: []
+    },
+    second: {
+      valid: true,
+      invalidFields: []
+    }
+  };
+
   constructor() { }
   // on save, persist to store
   // functions to add to db structure
@@ -94,6 +107,51 @@ export class FormService {
 
   detailsForForm(form) {
     return FormService.formDataStructure[form];
+  }
+
+  formsValid(): boolean {
+    let valid = false;
+    for (const prop in FormService.formValid) {
+      if (typeof FormService.formValid[prop] === 'object') {
+
+        valid = FormService.formValid[prop].valid && valid;
+      }
+    }
+    return valid;
+  }
+
+  get invalidFormControls() {
+    let fields: string[] = [];
+    for (const prop in FormService.formValid) {
+      if (typeof FormService.formValid[prop] === 'object' && !FormService.formValid[prop].valid) {
+        fields = fields.concat(FormService.formValid[prop].invalidFields);
+      }
+    }
+    return fields;
+  }
+
+  setFormValidity(formTitle, form: FormGroup) {
+    if (!form.valid) {
+    const invalidFields = [];
+    for (const prop in form.controls) {
+      if (form.controls.hasOwnProperty(prop) && !(form.controls[prop].valid)) {
+        if (form.controls[prop].hasOwnProperty('controls')) {
+          // should refactor into a recursive function
+          const fg = (form.controls[prop] as FormGroup);
+          for (const ctl in fg.controls) {
+            if (fg.controls.hasOwnProperty(ctl) && !(fg.controls[ctl].valid)) {
+              invalidFields.push(ctl);
+            }
+          }
+        } else {
+          invalidFields.push(prop);
+        }
+      }
+    }
+    FormService.formValid[formTitle].invalidFields = invalidFields;
+  }
+
+  FormService.formValid[formTitle].valid = form.valid;
   }
 
 }

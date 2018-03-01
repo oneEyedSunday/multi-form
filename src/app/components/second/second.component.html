@@ -1,23 +1,23 @@
 <form [formGroup]="form" class="formwidth">
   <div formGroupName="undergrad">
     <mat-input-container class="fullWidth">
-      <mat-select placeholder="School Name" formControlName="schoolname" >
+      <mat-select placeholder="School Name *" formControlName="schoolname" >
           <mat-option [value]="school" *ngFor="let school of schools">{{ school }}</mat-option>
       </mat-select>
     </mat-input-container>
     <mat-form-field class="fullWidth">
-      <input  placeholder="Department" matInput formControlName="department">
+      <input  placeholder="Department *" matInput formControlName="department">
     </mat-form-field>
     <mat-form-field class="fullWidth">
-      <input  placeholder="Course" matInput formControlName="course">
+      <input  placeholder="Course *" matInput formControlName="course">
     </mat-form-field>
     <mat-input-container class="fullWidth">
-    <mat-select placeholder="Degree" formControlName="degreetype" >
+    <mat-select placeholder="Degree *" formControlName="degreetype" >
         <mat-option [value]="degree" *ngFor="let degree of degreeTypes">{{ degree }}</mat-option>
     </mat-select>
     </mat-input-container>
     <mat-input-container class="fullWidth">
-      <mat-select placeholder="Grade" formControlName="grade" >
+      <mat-select placeholder="Grade *" formControlName="grade" >
           <mat-option [value]="grade" *ngFor="let grade of degreeGrades">{{ grade }}</mat-option>
       </mat-select>
     </mat-input-container>
@@ -38,8 +38,8 @@
     <div formArrayName="ssceResult">
       <div *ngFor="let result of getSsceResult.controls ;let i = index" [formGroup]="result">
         <mat-form-field>
-        <input matInput placeholder="Subject" formControlName="subject">
-        <mat-select placeholder="Grade" formControlName="grade">
+        <input matInput placeholder="Subject *" formControlName="subject">
+        <mat-select placeholder="Grade *" formControlName="grade">
           <mat-option [value]="(null)">--Select Grade--</mat-option>
           <mat-option [value]="grade" *ngFor="let grade of ssceGrades">{{grade}}</mat-option>
         </mat-select>
@@ -56,8 +56,8 @@
       </p>
         <div *ngFor="let result of getSsceResult2.controls ;let i = index" [formGroup]="result">
           <mat-form-field>
-          <input matInput placeholder="Subject" formControlName="subject">
-          <mat-select placeholder="Grade" formControlName="grade">
+          <input matInput placeholder="Subject *" formControlName="subject">
+          <mat-select placeholder="Grade *" formControlName="grade">
             <mat-option [value]="(null)">--Select Grade--</mat-option>
             <mat-option [value]="grade" *ngFor="let grade of ssceGrades">{{grade}}</mat-option>
           </mat-select>
@@ -75,10 +75,10 @@
     </p>
     <div *ngFor="let record of getEmploymentHistory.controls; let i = index;" [formGroup]="record">
       <mat-form-field>
-        <input  matInput formControlName="employer" placeholder="Employer Name">
+        <input  matInput formControlName="employer" placeholder="Employer Name *">
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="designation" placeholder="Job Designation">
+        <input matInput formControlName="designation" placeholder="Job Designation *">
       </mat-form-field>
       <mat-form-field>
         <input matInput formControlName="description" placeholder="Job Description">

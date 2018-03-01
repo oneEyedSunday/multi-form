@@ -1,5 +1,13 @@
 <div>
   <h1>Summary</h1>
+  <mat-hint *ngIf="!fs.formsValid()">
+    <p>You have some incorrect information. Please go back and correct them</p>
+    <mat-list>
+      <mat-list-item matline *ngFor="let field of fs.invalidFormControls">
+        {{field}}
+      </mat-list-item>
+    </mat-list>
+  </mat-hint>
   <div fxLayout="column">
     <div>
       <h2>Personal Details</h2>

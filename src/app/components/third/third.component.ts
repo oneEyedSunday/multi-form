@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ThirdComponent implements OnInit {
   fullform;
-  constructor(private fs: FormService) { }
+  constructor(public fs: FormService) { }
 
   ngOnInit() {
   this.fullform = FormService.formDataStructure;

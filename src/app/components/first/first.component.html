@@ -1,22 +1,22 @@
 <form [formGroup]="form">
     <mat-form-field class="fullWidth">
-        <input placeholder="First Name" formControlName="firstname" matInput>
+        <input placeholder="First Name *" formControlName="firstname" matInput>
     </mat-form-field>
     <mat-form-field class="fullWidth">
         <input placeholder="Other Names"dividerColor="accent"  formControlName="othernames" matInput>
     </mat-form-field>
     <mat-form-field class="fullWidth">
-        <input placeholder="Last Name" formControlName="lastname" matInput>
+        <input placeholder="Last Name *" formControlName="lastname" matInput>
     </mat-form-field>
     <mat-input-container class="fullWidth">
-        <mat-select formControlName="state_orig" placeholder="State of Origin">
+        <mat-select formControlName="state_orig" placeholder="State of Origin *">
             <mat-option [value]=null>--Select a State--</mat-option>
             <mat-option [value]="state" *ngFor="let state of states">{{state}}</mat-option>
         </mat-select>
     </mat-input-container>
 
     <mat-form-field class="fullWidth">
-      <input type="date" matInput formControlName="dob">
+      <input type="date" matInput formControlName="dob" >
     </mat-form-field>
     <mat-radio-group formControlName="marital_stat">
         <mat-radio-button value="married">
@@ -31,7 +31,7 @@
     </mat-radio-group>
 
     <mat-form-field class="fullWidth">
-        <input matInput placeholder="Phone Number" formControlName="phone">
+        <input matInput placeholder="Phone Number *" formControlName="phone">
     </mat-form-field>
     <mat-form-field>
         <mat-hint *ngIf="form.touched && form.hasError('nomatch')">
@@ -39,12 +39,12 @@
             Emails do not match!!!
           </span>
         </mat-hint>
-        <input matInput placeholder="Your Email address" formControlName="email">
+        <input matInput placeholder="Your Email address *" formControlName="email">
     </mat-form-field>
     <mat-form-field>
-        <input matInput placeholder="Confirm Your Email" formControlName="confirm">
+        <input matInput placeholder="Confirm Your Email *" formControlName="confirm">
     </mat-form-field>
     <mat-input-container class="fullWidth">
-        <textarea matInput placeholder="Address" formControlName="address"></textarea>
+        <textarea matInput placeholder="Address *" formControlName="address"></textarea>
     </mat-input-container>
 </form>

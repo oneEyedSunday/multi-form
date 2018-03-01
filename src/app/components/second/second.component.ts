@@ -45,6 +45,7 @@ export class SecondComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.fs.persist(this.form.value, 'second');
+    this.fs.setFormValidity('second', this.form);
   }
 
   createSsceResult(): FormGroup {

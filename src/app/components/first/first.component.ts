@@ -32,17 +32,18 @@ export class FirstComponent implements OnInit, OnDestroy {
       othernames: new FormControl(this.initialData.othernames),
       lastname: new FormControl(this.initialData.lastname, Validators.required),
       state_orig: new FormControl(this.initialData.state_orig, Validators.required),
-      dob: new FormControl(this.initialData.dob), // yyyy-mm-dd
+      dob: new FormControl(this.initialData.dob, Validators.required), // yyyy-mm-dd
       marital_stat: new FormControl(this.initialData.marital_stat),
       email: new FormControl(this.initialData.email, Validators.compose([Validators.email, Validators.required])),
       confirm: new FormControl(this.initialData.confirm, Validators.compose([Validators.email, Validators.required])),
-      phone: new FormControl(this.initialData.phone, Validators.pattern('^0[0-9]{10}$')),
-      address: new FormControl(this.initialData.address)
+      phone: new FormControl(this.initialData.phone, Validators.compose([Validators.pattern('^0[0-9]{10}$'), Validators.required])),
+      address: new FormControl(this.initialData.address, Validators.required)
   }, this.emailMatcher );
   }
 
   ngOnDestroy() {
     this.fs.persist(this.form.value, 'first');
+    this.fs.setFormValidity('first', this.form);
   }
 
  emailMatcher = (control: AbstractControl ) => {
